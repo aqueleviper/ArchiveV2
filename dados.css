@@ -1,8 +1,8 @@
 /* =========================================
    CSS DA PÁGINA DE ROLAGEM (FICHA)
    ========================================= */
+* { box-sizing: border-box; }
 
-/* --- ESTRUTURA GERAL DA PÁGINA --- */
 .container-ficha {
     max-width: 1000px; 
     margin: 40px auto; 
@@ -10,6 +10,7 @@
     display: flex; 
     flex-direction: column; 
     gap: 30px;
+    width: 100%;
 }
 
 .painel-atributos-ficha, 
@@ -19,6 +20,7 @@
     border-radius: 15px; 
     padding: 30px; 
     box-shadow: 0 0 20px rgba(0,0,0,0.8);
+    width: 100%;
 }
 
 .painel-atributos-ficha h2, 
@@ -60,11 +62,7 @@
     margin-bottom: 10px; 
 }
 
-.attr-controle { 
-    display: flex; 
-    align-items: center; 
-    gap: 15px; 
-}
+.attr-controle { display: flex; align-items: center; gap: 15px; }
 
 .attr-valor { 
     color: #fff; 
@@ -75,18 +73,9 @@
 }
 
 .btn-seta {
-    background-color: #222; 
-    border: 1px solid #555; 
-    color: #fff; 
-    width: 30px; 
-    height: 30px;
-    border-radius: 5px; 
-    cursor: pointer; 
-    font-size: 18px; 
-    transition: all 0.2s;
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
+    background-color: #222; border: 1px solid #555; color: #fff; width: 30px; height: 30px;
+    border-radius: 5px; cursor: pointer; font-size: 18px; transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
 }
 
 .btn-seta:hover { background-color: #ff3333; border-color: #ff3333; }
@@ -96,42 +85,20 @@
 
 /* --- BOTÃO PASSAR RODADA --- */
 .btn-passar {
-    display: block; 
-    width: 100%; 
-    max-width: 300px; 
-    margin: 30px auto 0 auto;
-    background-color: rgba(255, 204, 0, 0.1); 
-    color: #ffcc00; 
-    border: 1px solid #ffcc00;
-    padding: 15px; 
-    border-radius: 8px; 
-    font-family: 'Paytone', system-ui, sans-serif; 
-    cursor: pointer; 
-    transition: 0.3s;
+    display: block; width: 100%; max-width: 300px; margin: 30px auto 0 auto;
+    background-color: rgba(255, 204, 0, 0.1); color: #ffcc00; border: 1px solid #ffcc00;
+    padding: 15px; border-radius: 8px; font-family: 'Paytone', system-ui, sans-serif; cursor: pointer; transition: 0.3s;
 }
 
-.btn-passar:hover { 
-    background-color: #ffcc00; 
-    color: #000; 
-    box-shadow: 0 0 20px rgba(255, 204, 0, 0.5); 
-}
+.btn-passar:hover { background-color: #ffcc00; color: #000; box-shadow: 0 0 20px rgba(255, 204, 0, 0.5); }
 
 /* =========================================
-   TABELA DE PERÍCIAS (DESKTOP)
+   TABELA DE PERÍCIAS
    ========================================= */
+.header-pericias { text-align: center; margin-bottom: 20px; }
+.lista-pericias { display: flex; flex-direction: column; gap: 8px; width: 100%; }
 
-.header-pericias { 
-    text-align: center; 
-    margin-bottom: 20px; 
-}
-
-.lista-pericias { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 8px; 
-}
-
-/* Configuração do Grid para Cabeçalho e Linhas no Desktop */
+/* Cabeçalho no Desktop */
 .pericia-header, 
 .pericia-item {
     display: grid;
@@ -139,6 +106,7 @@
     align-items: center;
     gap: 15px;
     padding: 10px 15px;
+    width: 100%;
 }
 
 .pericia-header {
@@ -157,29 +125,15 @@
 .header-dados { text-align: center; }
 
 .pericia-item {
-    background-color: rgba(0, 0, 0, 0.5); 
-    border: 1px solid #333;
-    border-radius: 8px; 
-    transition: all 0.2s;
+    background-color: rgba(0, 0, 0, 0.5); border: 1px solid #333; border-radius: 8px; transition: all 0.2s;
 }
-
-.pericia-item:hover { 
-    background-color: rgba(30, 30, 30, 0.8); 
-    border-color: #555; 
-}
+.pericia-item:hover { background-color: rgba(30, 30, 30, 0.8); border-color: #555; }
 
 .pericia-nome {
-    color: #d1d1d1; 
-    font-family: 'Paytone', system-ui, sans-serif;
-    font-size: 15px; 
-    cursor: pointer; 
-    display: flex; 
-    align-items: center; 
-    gap: 8px;
+    color: #d1d1d1; font-family: 'Paytone', system-ui, sans-serif;
+    font-size: 15px; cursor: pointer; display: flex; align-items: center; gap: 8px;
 }
-
 .pericia-nome:hover { color: #ff3333; }
-.pericia-nome .tag-attr { font-size: 11px; color: #888; background-color: #222; padding: 2px 6px; border-radius: 4px; }
 
 .pericia-detalhes { display: contents; }
 .detalhe-grupo { display: flex; justify-content: center; align-items: center; }
@@ -203,7 +157,7 @@
 .btn-mini:hover { background-color: #ffcc00; color: #000; border-color: #ffcc00; }
 .btn-mini:disabled { opacity: 0.3; cursor: not-allowed; }
 
-/* --- INPUTS CUSTOMIZADOS --- */
+/* --- INPUTS --- */
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 input[type=number] { -moz-appearance: textfield; appearance: textfield; }
 
@@ -240,7 +194,7 @@ input[type=number] { -moz-appearance: textfield; appearance: textfield; }
 .select-attr:focus { border-color: #ff3333; box-shadow: 0 0 8px rgba(255, 51, 51, 0.3); }
 
 /* =========================================
-   CARD DE RESULTADO FLUTUANTE
+   CARD DE RESULTADO
    ========================================= */
 .card-resultado {
     position: fixed; bottom: 30px; right: 30px; width: 300px;
@@ -269,7 +223,7 @@ input[type=number] { -moz-appearance: textfield; appearance: textfield; }
 .card-descricao { color: #aaa; font-family: system-ui, sans-serif; font-size: 13px; text-align: center; margin: 0; font-style: italic; }
 
 /* =========================================
-   RESPONSIVIDADE (CELULAR) - FICHA
+   RESPONSIVIDADE DA FICHA (CELULAR)
    ========================================= */
 @media (max-width: 768px) {
     .container-ficha { margin: 15px auto; padding: 0 10px; gap: 15px; }
@@ -281,64 +235,44 @@ input[type=number] { -moz-appearance: textfield; appearance: textfield; }
     .attr-valor { font-size: 22px; }
     .btn-seta { width: 25px; height: 25px; font-size: 14px; }
 
-    /* Esconde o cabeçalho antigo da tabela */
+    /* Esconde o cabeçalho original */
     .pericia-header { display: none; } 
 
-    /* Transforma cada perícia em um mini-card */
+    /* Transforma em Card Vertical */
     .pericia-item { 
-        display: flex; 
-        flex-direction: column; 
-        align-items: stretch; 
-        gap: 10px; 
-        padding: 12px;
-        border-left: 3px solid #444;
+        display: flex; flex-direction: column; align-items: stretch; 
+        gap: 10px; padding: 12px; border-left: 3px solid #444;
     }
     .pericia-item:hover { border-left-color: #ff3333; }
 
-    /* Topo do card: Nome + Selector */
-    .pericia-nome { 
-        font-size: 15px; 
-        font-weight: bold;
-        justify-content: space-between;
-        padding-bottom: 8px;
-        border-bottom: 1px dashed #333;
-    }
+    .pericia-nome { font-size: 15px; font-weight: bold; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px dashed #333; }
     .select-attr { padding: 4px 8px; font-size: 12px; }
 
-    /* Área central com os inputs */
-    .pericia-detalhes { 
-        display: flex; 
-        justify-content: space-between; 
-        width: 100%;
-        gap: 10px;
-    }
-    
-    /* Cria os títulos "Treino" e "Bônus" via CSS no celular */
+    /* Inputs */
+    .pericia-detalhes { display: flex; justify-content: space-between; width: 100%; gap: 10px; }
     .detalhe-grupo { flex: 1; flex-direction: column; gap: 4px; }
     .detalhe-grupo:nth-child(1)::before { content: "TREINO"; font-size: 10px; color: #888; font-family: 'Paytone'; }
     .detalhe-grupo:nth-child(2)::before { content: "BÔNUS"; font-size: 10px; color: #888; font-family: 'Paytone'; }
 
-    /* Área inferior com os dados */
-    .controles-duplos { 
-        display: flex; 
-        justify-content: space-between; 
-        width: 100%; 
-        gap: 10px;
-        background-color: rgba(0,0,0,0.2);
-        padding: 8px;
-        border-radius: 6px;
-    }
-    
-    /* Cria os títulos "Gastos" e "Extras" via CSS no celular */
+    /* Dados */
+    .controles-duplos { display: flex; justify-content: space-between; width: 100%; gap: 10px; background-color: rgba(0,0,0,0.2); padding: 8px; border-radius: 6px; }
     .grupo-dados { flex: 1; flex-direction: column; gap: 2px; }
     .grupo-dados.atributo::before { content: "GASTOS"; font-size: 10px; color: #00ff64; font-family: 'Paytone'; }
     .grupo-dados.livre::before { content: "EXTRAS"; font-size: 10px; color: #ff3333; font-family: 'Paytone'; }
 
     .btn-mini { width: 28px; height: 28px; font-size: 16px; }
 
-    /* Card de resultado ocupa a base */
-    .card-resultado { bottom: 0; right: 0; left: 0; width: 100%; border-radius: 15px 15px 0 0; border-bottom: none; }
-    .card-body { padding: 15px; gap: 10px; }
+    /* CARD DE RESULTADO NO CELULAR */
+    .card-resultado { 
+        bottom: 15px; 
+        right: 15px; 
+        width: 260px; /* Menor para caber no canto */
+        border-radius: 12px;
+    }
+    .card-header { padding: 10px 15px; }
+    .card-header h3 { font-size: 15px; }
+    .card-body { padding: 12px; gap: 10px; }
     .card-numero-total { font-size: 32px; }
-    .dado-mini { width: 28px; height: 28px; font-size: 14px; }
+    .dado-mini { width: 26px; height: 26px; font-size: 13px; }
+    .card-descricao { font-size: 11px; }
 }
