@@ -9,22 +9,22 @@ const atributos = {
 
 const estadoPericias = {};
 const listaPericias = [
-    { nome: "Acrobacia", attr: "agi", penalidade: true }, { nome: "Adestramento", attr: "pre" },
-    { nome: "Artes", attr: "pre" }, { nome: "Atletismo", attr: "for" }, { nome: "Atualidades", attr: "int" },
-    { nome: "Ciências", attr: "int" }, { nome: "Crime", attr: "agi", penalidade: true },
-    { nome: "Diplomacia", attr: "pre" }, { nome: "Enganação", attr: "pre" }, { nome: "Fortitude", attr: "vig" },
-    { nome: "Furtividade", attr: "agi", penalidade: true }, { nome: "Iniciativa", attr: "agi" },
-    { nome: "Intimidação", attr: "pre" }, { nome: "Intuição", attr: "pre" }, { nome: "Investigação", attr: "int" },
-    { nome: "Luta", attr: "for" }, { nome: "Medicina", attr: "int" }, { nome: "Ocultismo", attr: "int" },
-    { nome: "Percepção", attr: "pre" }, { nome: "Pilotagem", attr: "agi" }, { nome: "Pontaria", attr: "agi" },
-    { nome: "Profissão", attr: "int" }, { nome: "Reflexos", attr: "agi" }, { nome: "Religião", attr: "pre" },
-    { nome: "Sobrevivência", attr: "int" }, { nome: "Tática", attr: "int" }, { nome: "Tecnologia", attr: "int" },
-    { nome: "Vontade", attr: "pre" }
+    { nome: "Acrobacia", attrPadrao: "agi", penalidade: true }, { nome: "Adestramento", attrPadrao: "pre" },
+    { nome: "Artes", attrPadrao: "pre" }, { nome: "Atletismo", attrPadrao: "for" }, { nome: "Atualidades", attrPadrao: "int" },
+    { nome: "Ciências", attrPadrao: "int" }, { nome: "Crime", attrPadrao: "agi", penalidade: true },
+    { nome: "Diplomacia", attrPadrao: "pre" }, { nome: "Enganação", attrPadrao: "pre" }, { nome: "Fortitude", attrPadrao: "vig" },
+    { nome: "Furtividade", attrPadrao: "agi", penalidade: true }, { nome: "Iniciativa", attrPadrao: "agi" },
+    { nome: "Intimidação", attrPadrao: "pre" }, { nome: "Intuição", attrPadrao: "pre" }, { nome: "Investigação", attrPadrao: "int" },
+    { nome: "Luta", attrPadrao: "for" }, { nome: "Medicina", attrPadrao: "int" }, { nome: "Ocultismo", attrPadrao: "int" },
+    { nome: "Percepção", attrPadrao: "pre" }, { nome: "Pilotagem", attrPadrao: "agi" }, { nome: "Pontaria", attrPadrao: "agi" },
+    { nome: "Profissão", attrPadrao: "int" }, { nome: "Reflexos", attrPadrao: "agi" }, { nome: "Religião", attrPadrao: "pre" },
+    { nome: "Sobrevivência", attrPadrao: "int" }, { nome: "Tática", attrPadrao: "int" }, { nome: "Tecnologia", attrPadrao: "int" },
+    { nome: "Vontade", attrPadrao: "pre" }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
     listaPericias.forEach(p => { 
-        estadoPericias[p.nome] = { dadosExtra: 0, dadosLivres: 0, treino: 0, bonus: 0 }; 
+        estadoPericias[p.nome] = { dadosExtra: 0, dadosLivres: 0, treino: 0, bonus: 0, attrAtual: p.attrPadrao }; 
     });
     
     renderizarAtributos();
@@ -62,6 +62,12 @@ window.mudarAtributo = function(chave, delta) {
     renderizarPericias(); 
 }
 
+// --- NOVA FUNÇÃO PARA MUDAR O ATRIBUTO DA PERÍCIA ---
+window.mudarAtributoPericia = function(nome, novoAtributo) {
+    estadoPericias[nome].attrAtual = novoAtributo;
+    renderizarPericias(); 
+}
+
 function renderizarPericias() {
     const container = document.getElementById('lista-pericias');
     container.innerHTML = '';
@@ -79,15 +85,31 @@ function renderizarPericias() {
     
     listaPericias.forEach((pericia) => {
         const estado = estadoPericias[pericia.nome];
-        const attrAtual = atributos[pericia.attr].atual;
+        const attrAtual = atributos[estado.attrAtual].atual; // Usa o atributo escolhido
 
         const item = document.createElement('div');
         item.className = 'pericia-item';
 
         const nomeEl = document.createElement('div');
         nomeEl.className = 'pericia-nome';
-        nomeEl.innerHTML = `${pericia.nome}${pericia.penalidade ? '*' : ''} <span class="tag-attr">${pericia.attr.toUpperCase()}</span>`;
-        nomeEl.onclick = () => rolarPericia(pericia);
+        
+        // TAG DO ATRIBUTO MUDOU PARA UM SELECT
+        nomeEl.innerHTML = `
+            <span onclick="rolarPericia('${pericia.nome}')" style="cursor:pointer; flex: 1;">
+                ${pericia.nome}${pericia.penalidade ? '*' : ''}
+            </span>
+            <select class="select-attr" onchange="mudarAtributoPericia('${pericia.nome}', this.value)" onclick="event.stopPropagation()">
+                <option value="for" ${estado.attrAtual === 'for' ? 'selected' : ''}>FOR</option>
+                <option value="agi" ${estado.attrAtual === 'agi' ? 'selected' : ''}>AGI</option>
+                <option value="pre" ${estado.attrAtual === 'pre' ? 'selected' : ''}>PRE</option>
+                <option value="int" ${estado.attrAtual === 'int' ? 'selected' : ''}>INT</option>
+                <option value="vig" ${estado.attrAtual === 'vig' ? 'selected' : ''}>VIG</option>
+            </select>
+        `;
+        
+        // Adiciona evento de clique no nome (mas o select tem stopPropagation)
+        const spanNome = nomeEl.querySelector('span');
+        spanNome.onclick = () => rolarPericia(pericia.nome);
 
         const detalhesEl = document.createElement('div');
         detalhesEl.className = 'pericia-detalhes';
@@ -109,6 +131,7 @@ function renderizarPericias() {
         const controlesEl = document.createElement('div');
         controlesEl.className = 'controles-duplos';
 
+        // 1. GRUPO VERDE (Atributo / Gastos)
         const grupoAtributo = document.createElement('div');
         grupoAtributo.className = 'grupo-dados atributo';
         
@@ -130,6 +153,7 @@ function renderizarPericias() {
         grupoAtributo.appendChild(displayA);
         grupoAtributo.appendChild(btnMaisA);
 
+        // 2. GRUPO VERMELHO (Livre / Extras)
         const grupoLivre = document.createElement('div');
         grupoLivre.className = 'grupo-dados livre';
         
@@ -176,9 +200,8 @@ window.mudarTreino = function(nome, delta) {
 };
 
 window.alterarDadosExtra = function(nome, tipo, delta) {
-    const pericia = listaPericias.find(p => p.nome === nome);
     const estado = estadoPericias[nome];
-    const attrAtual = atributos[pericia.attr].atual;
+    const attrAtual = atributos[estado.attrAtual].atual; // Usa o atributo escolhido
 
     if (tipo === 'atributo') {
         if (delta > 0 && estado.dadosExtra >= attrAtual) return;
@@ -193,27 +216,23 @@ window.alterarDadosExtra = function(nome, tipo, delta) {
     renderizarPericias(); 
 }
 
-function rolarPericia(pericia) {
-    const estado = estadoPericias[pericia.nome];
-    const dadosAtributo = estado.dadosExtra; // Gastos (verdes)
-    const dadosLivres = estado.dadosLivres;  // Extras (vermelhos)
+function rolarPericia(nomePericia) {
+    const periciaBase = listaPericias.find(p => p.nome === nomePericia);
+    const estado = estadoPericias[nomePericia];
+    const dadosAtributo = estado.dadosExtra; 
+    const dadosLivres = estado.dadosLivres;  
+    const attrNome = estado.attrAtual; // Pega o atributo selecionado
     
-    // 1. Desconta os dados gastos do atributo principal
     if (dadosAtributo > 0) {
-        const desconto = Math.min(dadosAtributo, atributos[pericia.attr].atual);
-        atributos[pericia.attr].atual -= desconto;
-        atualizarDisplayGasto(pericia.attr);
+        const desconto = Math.min(dadosAtributo, atributos[attrNome].atual);
+        atributos[attrNome].atual -= desconto;
+        atualizarDisplayGasto(attrNome);
         estado.dadosExtra = 0;
     }
 
-    // 2. Reseta os dados extras após a rolagem
     estado.dadosLivres = 0;
     renderizarPericias();
 
-    // ==========================================
-    // MATEMÁTICA DEFINITIVA
-    // ==========================================
-    // Regra: 1 base + gastos + extras
     const totalMatematico = 1 + dadosAtributo + dadosLivres;
     
     let totalDados;
@@ -221,30 +240,22 @@ function rolarPericia(pericia) {
     let vantagem = false;
 
     if (totalMatematico > 1) {
-        // Se der positivo (maior que 1), rola o total e pega o MAIOR
         totalDados = totalMatematico;
         vantagem = true;
     } 
     else if (totalMatematico === 1) {
-        // Se der exatamente 1, rola 1 dado normal
         totalDados = 1;
     } 
     else {
-        // Se der 0 ou negativo, rola Abs(Resultado) + 2 e pega o MENOR
-        // 0 => Abs(0) + 2 = 2 dados
-        // -1 => Abs(-1) + 2 = 3 dados
-        // -2 => Abs(-2) + 2 = 4 dados
         totalDados = Math.abs(totalMatematico) + 2; 
         desvantagem = true;
     }
 
-    // 3. Rola os dados
     const resultados = [];
     for (let i = 0; i < totalDados; i++) {
         resultados.push(Math.floor(Math.random() * 20) + 1);
     }
 
-    // 4. Escolha do dado (Maior para vantagem, Menor para desvantagem)
     let resultadoBase = Math.max(...resultados); 
     if (desvantagem) {
         resultadoBase = Math.min(...resultados); 
@@ -252,10 +263,9 @@ function rolarPericia(pericia) {
 
     const resultadoFinal = resultadoBase + estado.treino + estado.bonus;
 
-    // 5. Preenche o Card de Resultado
     const cardResultado = document.getElementById('card-resultado-flutuante');
     
-    let titulo = pericia.nome;
+    let titulo = periciaBase.nome;
     if (desvantagem) titulo += " (Desvantagem)";
     else if (vantagem) titulo += " (Vantagem)";
     
