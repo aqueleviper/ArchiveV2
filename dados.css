@@ -276,8 +276,10 @@ input[type=number] { -moz-appearance: textfield; appearance: textfield; }
     .dado-mini { width: 26px; height: 26px; font-size: 13px; }
     .card-descricao { font-size: 11px; }
 }
-.painel-atributos-ficha .subtitulo-contato {
-    text-align: center;
-    width: 100%;
-    display: block;
+/* Força a centralização do subtítulo na ficha */
+div.painel-atributos-ficha p.subtitulo-contato {
+    text-align: center !important;
+    margin: 0 auto 30px auto !important;
+    display: block !important;
+    width: 100% !important;
 }
