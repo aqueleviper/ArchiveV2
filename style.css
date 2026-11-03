@@ -508,3 +508,10 @@ body {
     .letras { font-size: 14px; }
     .titulo-fundadores { font-size: 1.5em; margin-top: 30px; }
 }
+/* Força a centralização do subtítulo na ficha */
+div.painel-atributos-ficha p.subtitulo-contato {
+    text-align: center !important;
+    margin: 0 auto 30px auto !important;
+    display: block !important;
+    width: 100% !important;
+}
