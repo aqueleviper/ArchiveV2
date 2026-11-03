@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo Paranormal - Arquivo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- MENU SUSPENSO -->
+    <div class="menu-suspenso">
+        <button id="btn-menu" class="btn-menu-principal">
+            <span class="icone-menu">≡</span> ACESSO RÁPIDO
+        </button>
+        <div id="dropdown-menu" class="dropdown-conteudo">
+            <a href="dados.html" class="dropdown-item">Mesa de Rolagem</a>
+            <button id="btn-abrir-atualizacoes" class="dropdown-item">Atualizações do Sistema</button>
+        </div>
+    </div>
+
+    <!-- PAINEL DE ATUALIZAÇÕES -->
+    <div id="painel-atualizacoes" class="painel-atualizacoes">
+        <div class="painel-conteudo">
+            <h2 class="titulo-contato">Log de Atualizações</h2>
+            <p class="subtitulo-contato">Registro de alterações no banco de dados do Protocolo.</p>
+            <hr style="border-color: #333;">
+            <ul class="lista-atualizacoes">
+                <li><strong>v3.0 - Mesa de Rolagem Integrada</strong> : O sistema agora conta com uma ficha interativa para testes de perícia, com gasto de atributos, bônus e resultado flutuante no canto.</li>
+                <li><strong>v2.1 - Nomenclatura E.C.C.</strong>: O sistema foi atualizado para E.C.C. (Entidade-Conceito-Criatura).</li>
+                <li><strong>v2.0 - Reformulação do Arquivo</strong>: O banco de dados agora possui um sistema de busca.</li>
+                <li><strong>v1.5 - Contato e Redes</strong>: Adicionados canais de comunicação seguros.</li>
+                <li><strong>v1.0 - Fundação</strong>: Criação do Protocolo Paranormal e dossiês iniciais.</li>
+            </ul>
+            <button id="btn-fechar-atualizacoes" class="btn-voltar" style="margin-top: 20px; width: 100%;">Fechar Registro</button>
+        </div>
+    </div>
+
+    <!-- Cabeçalho -->
+    <header class="caixinha">
+        <h1 class="letras">
+            Protocolo Paranormal
+            <br>
+        </h1>
+        <p class="letras aviso-topo">
+            <em>"Se este site desaparecer amanhã, você já sabe o que aconteceu. Não procure por nós. Nós procuraremos vocês, se for o caso."</em>
+        </p>
+        <br>
+    </header>
+
+    <section class="container-texto">
+        <p class="letras">
+            Bem-vindos ao site oficial do Protocolo Paranormal! Este site tratará de pesquisas acerca das E.C.C. que assolam
+            o plano terreno até o momento.
+            <br><br> 
+            Abaixo, o banco de dados de possíveis E.C.C. catalogadas:
+            <br> <br>
+        </p>
+    </section>
+
+    <!-- SISTEMA DE PESQUISA -->
+    <div class="container-pesquisa">
+        <input type="text" id="input-pesquisa" class="barra-pesquisa" placeholder="Pesquisar E.C.C. por nome ou código...">
+        <span class="icone-pesquisa">🔍</span>
+    </div>
+
+    <!-- Lista de Resultados -->
+    <div class="resultados-pesquisa" id="lista-ecs">
+        
+        <a href="entidades/n1.html" class="resultado-item">
+            <div class="card-imagem"><img src="fotos/creature.png" alt="E.C.C.-01"></div>
+            <div class="card-info">
+                <h3>E.C.C.-01: O Sol</h3>
+                <p>Classe: Criatura</p>
+                <p class="card-desc">O sorriso que imita a estrutura de um sol. Não necessita de mito para se manifestar.</p>
+            </div>
+        </a>
+
+        <a href="entidades/n2.html" class="resultado-item">
+            <div class="card-imagem"><img src="fotos/sooner.png" alt="E.C.C.-02"></div>
+            <div class="card-info">
+                <h3>E.C.C.-02: Meu Pesadelo</h3>
+                <p>Classe: Conceito</p>
+                <p class="card-desc">Habita os limiares entre o sono e a vigília. Ele simplesmente te espera dormir.</p>
+            </div>
+        </a>
+
+        <a href="entidades/n3.html" class="resultado-item">
+            <div class="card-imagem"><img src="fotos/special.png" alt="E.C.C.-03"></div>
+            <div class="card-info">
+                <h3>E.C.C.-03: Pastor Vermelho</h3>
+                <p>Classe: Entidade</p>
+                <p class="card-desc">Manifestada a partir de lendas rurais. Seus olhos são espirais hipnóticas.</p>
+            </div>
+        </a>
+
+        <a href="entidades/n4.html" class="resultado-item">
+            <div class="card-imagem"><img src="fotos/think.png" alt="E.C.C.-04"></div>
+            <div class="card-info">
+                <h3>E.C.C.-04: Amigo</h3>
+                <p>Classe: Entidade</p>
+                <p class="card-desc">O Amigo Imaginário. Aparece para crianças. Sorri com dezenas de dentes afiados.</p>
+            </div>
+        </a>
+
+        <div id="mensagem-vazio" class="mensagem-vazio" style="display: none;">
+            <p>Nenhuma E.C.C. corresponde à sua pesquisa.</p>
+            <p style="font-size: 12px; color: #ff3333;">A Criatura pode ter escapado do banco de dados XD</p>
+        </div>
+    </div>
+
+    <section class="container-texto">
+        <p class="letras destaque-vermelho">
+            <strong>Apesar de não termos nenhuma evidência concreta.</strong>
+        </p>
+    </section>
+
+    <div class="caixinha">
+        <h1 class="trinhas">
+            <br> Mas afinal, o que são as E.C.C.? <br><br>
+        </h1>
+    </div>
+
+    <div class="texto-bloco">
+        <p class="teste">
+            E.C.C. é uma abreviação para o que chamamos de <span class="a">Entidade-Conceito-Criatura</span>. Ambas estas diferem entre si, apesar
+            de sua incontestável semelhança - se manifestando em nossa realidade através do Medo.
+            <br><br>
+            A única diferença notável entre Entidade e Criatura, com o nosso conhecimento, é o objeto de Medo responsável pela manifestação destas, ou seja:
+            A Criatura se manifesta sem necessitar de um objeto de Medo enquanto, a Entidade, se manifesta frequentemente através de Mitos - sendo estes, o seu objeto de Medo.
+            <br>
+            Por fim, um Conceito se trata mais de uma regra que precisa ser seguida até pelo próprio universo, uma afirmação que não pode ser negada e um contexto que sempre está presente - Um Axioma.
+        </p>
+        <blockquote class="dialogo-pesquisador">
+            "Entidade ou Criatura...? A diferença é sutíl. A Criatura não precisa de motivo pra existir, basicamente. Já a Entidade sempre vai nascer de Mitos; histórias e lendas que passamos como tradição de geração em geração."
+            <br>"Tudo isso se difere de um Conceito que, desde o princípio, já existiu e não tem como desaparecer."
+        </blockquote>
+    </div>
+
+    <div class="texto-bloco">
+        <p class="teste">
+            Um dos nossos estudos mais recentes afim de descobrir mais sobre as E.C.C. está sendo realizado com base em um <span class="a">Afetado</span> - Afetado, para fins
+            intelectuais, é o nome que damos a um ser humano ou animal que tenha tido contato com um possível E.C.C.
+            <br><br>
+            Enfim. Afetados, normalmente, não são seres agressivos e muito menos malignos. Na verdade, a maioria é totalmente
+            o oposto e, de forma geral, amigável. A maioria possui cicatrizes paranormais irreversíveis e, por isso, podem acabar sendo agressivos (em casos muito específicos).
+        </p>
+        <div class="aviso-afetado">
+            <p><strong>Pequena Dica:</strong> Se você já encontrou um Afetado alguma vez, <strong>fique atento!</strong> As E.C.C. costumam se aproveitar 
+                de quem se envolve com seus possessos. Entre em contato com uma autoridade competente ou conosco o <strong>mais rápido possível.</strong></p>
+        </div>
+    </div>
+
+    <!-- Seção de Contato e Redes -->
+    <div class="secao-contato">
+        <h2 class="letras titulo-contato">Canais de Comunicação</h2>
+        <p class="letras subtitulo-contato">Se você presenciou algo anormal ou deseja relatar um avistamento, entre em contato.</p>
+        
+        <div class="botoes-contato">
+            <a href="https://www.youtube.com/channel/UCdWNOnpSzMsEpuW_0A4q7kQ" target="_blank" rel="noopener noreferrer" class="btn-rede btn-youtube">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                Nosso Canal no YouTube
+            </a>
+
+            <a href="https://zangi.com/" target="_blank" rel="noopener noreferrer" class="btn-rede btn-zangi" onclick="alert('Nosso contato no Zangi: +92 9336-3290\n\nCopie o número e adicione-nos em seu aplicativo Zangi.'); return false;">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/><path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>
+                Entre em contato comigo!
+            </a>
+        </div>
+    </div>
+
+    <div class="aviso-atualizacoes">
+        <div class="icone-atualizacao">⚠️</div>
+        <p class="texto-atualizacao">
+            <strong>AVISO DO SISTEMA:</strong> Este arquivo está em constante expansão. Novas atualizações, dossiês e relatos serão adicionados conforme o tempo for passando. Fique atento. O Protocolo nunca para de observar.
+        </p>
+    </div>
+
+    <div class="vazio"></div>
+    <script src="script.js"></script>
+</body>
+</html>

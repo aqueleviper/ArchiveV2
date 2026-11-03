@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Rolagem | Protocolo Paranormal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dados.css">
+</head>
+<body>
+
+    <header class="caixinha" style="margin-top: 20px;">
+        <h1 class="letras">Mesa de Rolagem</h1>
+        <p class="letras aviso-topo"><em>"O destino é apenas uma probabilidade!"</em></p>
+        <a href="index.html" class="btn-voltar" style="display: inline-block; margin-top: 10px;">&lt; Voltar ao Arquivo</a>
+    </header>
+
+    <div class="container-ficha">
+        <!-- PAINEL DE ATRIBUTOS -->
+        <section class="painel-atributos-ficha">
+            <h2>Atributos Base</h2>
+            <p class="subtitulo-contato">Defina seus valores. Ao passar a rodada, os pontos gastos voltam.</p>
+            
+            <div class="grid-atributos-ficha">
+                <div class="attr-card">
+                    <span class="attr-nome">FORÇA</span>
+                    <div class="attr-controle">
+                        <button class="btn-seta" onclick="mudarAtributo('for', -1)">-</button>
+                        <span id="val-for" class="attr-valor">2</span>
+                        <button class="btn-seta" onclick="mudarAtributo('for', 1)">+</button>
+                    </div>
+                    <span class="attr-gasto">Restam: <span id="gasto-for">2</span></span>
+                </div>
+                <div class="attr-card">
+                    <span class="attr-nome">AGILIDADE</span>
+                    <div class="attr-controle">
+                        <button class="btn-seta" onclick="mudarAtributo('agi', -1)">-</button>
+                        <span id="val-agi" class="attr-valor">2</span>
+                        <button class="btn-seta" onclick="mudarAtributo('agi', 1)">+</button>
+                    </div>
+                    <span class="attr-gasto">Restam: <span id="gasto-agi">2</span></span>
+                </div>
+                <div class="attr-card">
+                    <span class="attr-nome">PRESENÇA</span>
+                    <div class="attr-controle">
+                        <button class="btn-seta" onclick="mudarAtributo('pre', -1)">-</button>
+                        <span id="val-pre" class="attr-valor">3</span>
+                        <button class="btn-seta" onclick="mudarAtributo('pre', 1)">+</button>
+                    </div>
+                    <span class="attr-gasto">Restam: <span id="gasto-pre">3</span></span>
+                </div>
+                <div class="attr-card">
+                    <span class="attr-nome">INTELECTO</span>
+                    <div class="attr-controle">
+                        <button class="btn-seta" onclick="mudarAtributo('int', -1)">-</button>
+                        <span id="val-int" class="attr-valor">2</span>
+                        <button class="btn-seta" onclick="mudarAtributo('int', 1)">+</button>
+                    </div>
+                    <span class="attr-gasto">Restam: <span id="gasto-int">2</span></span>
+                </div>
+                <div class="attr-card">
+                    <span class="attr-nome">VIGOR</span>
+                    <div class="attr-controle">
+                        <button class="btn-seta" onclick="mudarAtributo('vig', -1)">-</button>
+                        <span id="val-vig" class="attr-valor">2</span>
+                        <button class="btn-seta" onclick="mudarAtributo('vig', 1)">+</button>
+                    </div>
+                    <span class="attr-gasto">Restam: <span id="gasto-vig">2</span></span>
+                </div>
+            </div>
+            <button id="btn-passar-rodada" class="btn-acao btn-passar">Passar Rodada (Resetar)</button>
+        </section>
+
+        <!-- PAINEL DE PERÍCIAS -->
+        <section class="painel-pericias">
+            <div class="header-pericias">
+                <h2>Perícias</h2>
+                <p class="subtitulo-contato">
+                    Clique no nome para <strong>rolar</strong>. Use <span class="simbolo">[+]</span> e <span class="simbolo">[-]</span> para alocar dados extras.
+                </p>
+            </div>
+            <div class="lista-pericias" id="lista-pericias"></div>
+        </section>
+    </div>
+
+    <!-- CARD DE RESULTADO FLUTUANTE (Canto inferior direito) -->
+    <div id="card-resultado-flutuante" class="card-resultado">
+        <div class="card-header">
+            <h3 id="card-titulo">Perícia</h3>
+            <button id="btn-fechar-resultado" class="btn-fechar-card">X</button>
+        </div>
+        <div class="card-body">
+            <div class="card-total-area">
+                <span id="card-total" class="card-numero-total">0</span>
+            </div>
+            <div id="card-dados-visuais" class="card-dados-area"></div>
+            <p id="card-desc" class="card-descricao"></p>
+        </div>
+    </div>
+
+    <script src="dados.js"></script>
+</body>
+</html>
